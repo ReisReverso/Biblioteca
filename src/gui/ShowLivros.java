@@ -39,9 +39,7 @@ public class ShowLivros  extends JDialog {
 		model.addColumn("LIVROID");
 		model.addColumn("TITULO");
 		model.addColumn("AUTOR");
-		model.addColumn("GENERO");
 		model.addColumn("PAGINAS");
-		model.addColumn("PUBLICACAO");
 		
 		db = new Database();
 		atualizaTabela();
@@ -91,7 +89,7 @@ public class ShowLivros  extends JDialog {
 	public void atualizaTabela() {
 		model.setNumRows(0);
 		for (Livros u : db.listaLivros()) {
-			model.addRow(new Object[]{u.getIdLivro(), u.getTitulo(), u.getAutor(), u.getGenero(), u.getPaginas(), u.getPublicacao()});
+			model.addRow(new Object[]{u.getIdLivro(), u.getTitulo(), u.getAutor(), u.getPaginas()});
 		}
 	}
 }

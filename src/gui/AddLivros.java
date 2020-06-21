@@ -25,15 +25,13 @@ public class AddLivros extends JDialog{
 	private JFormattedTextField tfPag;
 	private JLabel lblPublicacao;
 	private JFormattedTextField tfPublicacao;
-	private JLabel lblSinopse;
-	private JTextArea txtrSinopse;
 	private JButton btnAdd;
 	private Database db = new Database();
 	
 	public AddLivros() {
 		this.setModal(true);
 		this.setTitle("Novo Livro");
-		this.setSize(500, 550);
+		this.setSize(500, 280);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setLayout(null);
 		this.setLocationRelativeTo(null);
@@ -89,44 +87,34 @@ public class AddLivros extends JDialog{
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		tfPag.setBounds(350, 100, 60, 30);
+		tfPag.setBounds(350, 100, 100, 30);
 		this.add(tfPag);
 		
 		lblPublicacao = new JLabel("Publicação");
 		lblPublicacao.setFont(new Font("Times New Roman", Font.BOLD, 18));
-		lblPublicacao.setBounds(20, 150, 80, 30);
+		lblPublicacao.setBounds(20, 150, 100, 30);
 		this.add(lblPublicacao);
 		
 		try {
 			MaskFormatter format = new MaskFormatter("##/##/####");
 			tfPublicacao = new JFormattedTextField(format);
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		tfPublicacao.setBounds(120, 150, 80, 30);
+		tfPublicacao.setBounds(150, 150, 100, 30);
 		this.add(tfPublicacao);
 		
-		lblSinopse = new JLabel("Sinopse");
-		lblSinopse.setFont(new Font("Times New Roman", Font.BOLD, 18));
-		lblSinopse.setBounds(150, 200, 60, 30);
-		this.add(lblSinopse);
-		
-		txtrSinopse = new JTextArea();
-		JScrollPane scroll = new JScrollPane(txtrSinopse);
-		scroll.setBounds(40, 250, 420, 200);
-		this.add(scroll);
 		
 		btnAdd = new JButton("NOVO LIVRO");
 		btnAdd.setFont(new Font("Times New Roman", Font.BOLD, 18));
-		btnAdd.setBounds(160, 470, 200, 30);
+		btnAdd.setBounds(160, 200, 200, 30);
 		this.add(btnAdd);
 		btnAdd.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if (tfTitulo.getText().length() >= 5) {
 					cadastraLivro(tfTitulo.getText(), cbAutor.getSelectedItem().toString(), cbGenero.getSelectedItem().toString(),
-							Integer.parseInt(tfPag.getText()), tfPublicacao.getText(), txtrSinopse.getText());
+							Integer.parseInt(tfPag.getText()), tfPublicacao.getText());
 				}
 				else {
 					JOptionPane.showMessageDialog(null, "O nome do livro deve ter no mínimo 5 caracteres.");
@@ -135,9 +123,9 @@ public class AddLivros extends JDialog{
 		});
 	}
 	
-	public void cadastraLivro(String titulo, String autor, String genero, int paginas, String publicacao, String sinopse) {
+	public void cadastraLivro(String titulo, String autor, String genero, int paginas, String publicacao) {
 		Database db = new Database();
-		Boolean cadastrou = db.cadastraLivro(titulo, autor, genero, paginas, publicacao, sinopse);
+		Boolean cadastrou = db.cadastraLivro(titulo, autor, genero, paginas, publicacao);
 		if (cadastrou) {
 			JOptionPane.showMessageDialog(null, "Livro cadastrado com sucesso!");
 			dispose();

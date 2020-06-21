@@ -2,7 +2,9 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Toolkit;
 import javax.swing.*;
+import bd.Database;
 
 @SuppressWarnings("serial")
 public class SplashScreen extends JFrame {
@@ -14,6 +16,7 @@ public class SplashScreen extends JFrame {
 	
 	public SplashScreen() {
 		this.setUndecorated(true);
+		this.setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("/icon.png")));
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setSize(550, 350);
 		this.setLayout(null);
@@ -27,7 +30,6 @@ public class SplashScreen extends JFrame {
 		
 		progress = new JProgressBar();
 		progress.setBounds(50, 300, 450, 15);
-		//progress.setIndeterminate(true);
 		panelsplash.add(progress);
 		
 		percent = new JLabel();
@@ -43,16 +45,20 @@ public class SplashScreen extends JFrame {
 		
 	}
 	
+	@SuppressWarnings("unused")
 	public void rodaSplash() {
 		try {
+			Database db = new Database();
 			for (int i = 0; i <= 100; i++) {
 				percent.setText(i+"%");
 				progress.setValue(i);
-				Thread.sleep(50);
+				Thread.sleep(100);
 				if (i == 100) {
 					this.dispose();
-					Login login = new Login();
-					login.setVisible(true);
+					//Login login = new Login();
+					//login.setVisible(true);
+					Biblioteca biblio = new Biblioteca();
+					biblio.setVisible(true);
 				}
 			}
 		} catch (InterruptedException e) {

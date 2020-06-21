@@ -1,5 +1,5 @@
 package main;
-//import GUI.Login;
+//import gui.Login;
 import gui.SplashScreen;
 
 public class Biblio {

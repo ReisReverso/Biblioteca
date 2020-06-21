@@ -1,29 +1,29 @@
 package gui;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.*;
-
-import bd.Database;
+//import bd.Database;
 
 @SuppressWarnings("serial")
 public class Biblioteca extends JFrame{
 	
-	private JLabel lblUser;
+	/*private JLabel lblUser;
 	private JLabel lblUsr;
-	private JButton btnLogout;
+	private JButton btnLogout;*/
 	private JButton btnAutores;
 	private JButton btnGeneros;
 	private JButton btnLivros;
 	private JButton btnAddAutor;
 	private JButton btnAddGenero;
 	private JButton btnAddLivro;
-	private Database db;
+	//private Database db;
 	
-	public Biblioteca(String usr, int logado) {
+	public Biblioteca(/*String usr, int logado*/) {
 		this.setTitle("Biblioteca");
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("/icon.png")));
 		this.setLayout(null);
 		this.setSize(500, 400);
 		this.setLocationRelativeTo(null);
@@ -34,7 +34,7 @@ public class Biblioteca extends JFrame{
 		
 		JMenu mnArquivo = new JMenu("Arquivo");
 		bar.add(mnArquivo);
-		JMenuItem mntmLogout = new JMenuItem("Logout");
+		/*JMenuItem mntmLogout = new JMenuItem("Logout");
 		mnArquivo.add(mntmLogout);
 		mntmLogout.addActionListener(new ActionListener() {
 			@Override
@@ -43,7 +43,7 @@ public class Biblioteca extends JFrame{
 				Login login = new Login();
 				login.setVisible(true);
 			}
-		});
+		});*/
 		JMenuItem mntmSair = new JMenuItem("Sair");
 		mnArquivo.add(mntmSair);
 		mntmSair.addActionListener(new ActionListener() {
@@ -53,7 +53,7 @@ public class Biblioteca extends JFrame{
 			}
 		});
 		
-		JMenu mnUser = new JMenu("Usuário");
+		/*JMenu mnUser = new JMenu("Usuário");
 		bar.add(mnUser);
 		JMenuItem mntmChangePass = new JMenuItem("Trocar senha");
 		mnUser.add(mntmChangePass);
@@ -63,7 +63,7 @@ public class Biblioteca extends JFrame{
 				ChangePassword trocasenha = new ChangePassword(lblUsr.getText());
 				trocasenha.setVisible(true);
 			}
-		});
+		});*/
 		
 		JMenu mnLivros = new JMenu("Livros");
 		bar.add(mnLivros);
@@ -128,7 +128,7 @@ public class Biblioteca extends JFrame{
 			}
 		});
 		
-		JMenu mnAdmin = new JMenu("Admin");
+		/*JMenu mnAdmin = new JMenu("Admin");
 		bar.add(mnAdmin);
 		JMenuItem mntmNewUsr = new JMenuItem("Novo usuário");
 		mnAdmin.add(mntmNewUsr);
@@ -173,7 +173,7 @@ public class Biblioteca extends JFrame{
 				Login login = new Login();
 				login.setVisible(true);
 			}
-		});
+		});*/
 		
 		btnAutores = new JButton("LISTAR AUTORES");
 		btnAutores.setFont(new Font("Times New Roman", Font.BOLD, 18));
@@ -247,15 +247,15 @@ public class Biblioteca extends JFrame{
 			}
 		});
 		
-		verificaPrimeiroLogin(logado);
+		//verificaPrimeiroLogin(logado);
 	}
 	
-	private void verificaPrimeiroLogin(int logado) {
+	/*private void verificaPrimeiroLogin(int logado) {
 		if (logado == 0) {
 			JOptionPane.showMessageDialog(null, "O sistema identificou que esse é seu primeiro login.\n"
 					+ "Para sua segurança recomendamos que altere sua senha através do menu Usuario > Senha.");
 			db = new Database();
 			db.atualizaFlagLogin(lblUsr.getText());
 		}
-	}
+	}*/
 }
